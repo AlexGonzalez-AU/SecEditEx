@@ -134,9 +134,6 @@ function Get-UserRightsAssignment {
                 @{"Name" = "SeTakeOwnershipPrivilege";          "Description" = "Take ownership of files or other objects";      "OperatingSystem" = @("10","6","5","5") }
             )
 
-            $operatingSystemVersion = Get-WmiObject -Query "SELECT Version FROM Win32_OperatingSystem" | Select-Object -ExpandProperty Version
-            $operatingSystemVersion = $operatingSystemVersion.Split(".")[0] -join(".")
-
             $tmpFile = [io.path]::GetTempFileName()
             "<force file encoding>" | Out-File -Encoding ascii -FilePath $tmpFile
             [string]$msg = & ("{0}\System32\SecEdit.exe" -f $env:windir) /export /mergedpolicy /areas USER_RIGHTS /cfg ("{0}" -f $tmpFile)
@@ -164,7 +161,7 @@ function Get-UserRightsAssignment {
             $userRightsAssignment_GroupPolicy = $userRightsAssignment_GroupPolicy | Select-String -Pattern "^Se+" | Select-Object -ExpandProperty Line
             $userRightsAssignment_LocalPolicy = $userRightsAssignment_LocalPolicy | Select-String -Pattern "^Se+" | Select-Object -ExpandProperty Line
 
-            foreach ($userRigtsAssignment in ($userRightsAssignments | Where-Object {$_.OperatingSystem -Contains $operatingSystemVersion})) {
+            foreach ($userRigtsAssignment in $userRightsAssignments) {
                 if (($userRightsAssignment_LocalPolicy | ForEach-Object {$_.Split("=")[0].trim()}) -notcontains $userRigtsAssignment.Name) {
                     $userRightsAssignment_LocalPolicy += ("{0} = " -f $userRigtsAssignment.Name)
                 }
