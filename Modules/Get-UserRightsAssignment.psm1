@@ -86,53 +86,52 @@ function Get-UserRightsAssignment {
                 }
             }    
             
-            $userRightsAssignments = @(
-                @{"Name" = "SeNetworkLogonRight";               "Description" = "Access this computer from the network";         "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeTrustedCredManAccessPrivilege";   "Description" = "Access Credential Manager as a trusted caller"; "OperatingSystem" = @("10","6"        )};
-                @{"Name" = "SeTcbPrivilege";                    "Description" = "Act as part of the operating system";           "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeMachineAccountPrivilege";         "Description" = "Add workstations to domain";                    "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeIncreaseQuotaPrivilege";          "Description" = "Adjust memory quotas for a process";            "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeInteractiveLogonRight";           "Description" = "Allow log on locally";                          "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeRemoteInteractiveLogonRight";     "Description" = "Allow log on through Terminal Services";        "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeBackupPrivilege";                 "Description" = "Back up files and directories";                 "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeChangeNotifyPrivilege";           "Description" = "Bypass traverse checking";                      "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeSystemtimePrivilege";             "Description" = "Change the system time";                        "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeTimeZonePrivilege";               "Description" = "Change the time zone";                          "OperatingSystem" = @("10","6"        )};
-                @{"Name" = "SeCreatePagefilePrivilege";         "Description" = "Create a pagefile";                             "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeCreateTokenPrivilege";            "Description" = "Create a token object";                         "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeCreateGlobalPrivilege";           "Description" = "Create global objects";                         "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeCreatePermanentPrivilege";        "Description" = "Create permanent shared objects";               "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeCreateSymbolicLinkPrivilege";     "Description" = "Create symbolic links";                         "OperatingSystem" = @("10","6"        )};
-                @{"Name" = "SeDebugPrivilege";                  "Description" = "Debug programs";                                "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeDenyNetworkLogonRight";           "Description" = "Deny access to this computer from the network"; "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeDenyBatchLogonRight";             "Description" = "Deny log on as a batch job";                    "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeDenyServiceLogonRight";           "Description" = "Deny log on as a service";                      "OperatingSystem" = @("10","6","5","5")}; 
-                @{"Name" = "SeDenyInteractiveLogonRight";       "Description" = "Deny log on locally";                           "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeDenyRemoteInteractiveLogonRight"; "Description" = "Deny log on through Terminal Services";         "OperatingSystem" = @("10","6","5","5")};
-                @{"Name" = "SeEnableDelegationPrivilege";       "Description" = "Enable computer and user accounts to be trusted for delegation"; 
-                                                                                                                                    "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeRemoteShutdownPrivilege";         "Description" = "Force shutdown from a remote system";           "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeAuditPrivilege";                  "Description" = "Generate security audits";                      "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeImpersonatePrivilege";            "Description" = "Impersonate a client after authentication";     "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeIncreaseWorkingSetPrivilege";     "Description" = "Increase a process working set";                "OperatingSystem" = @("10","6"        ) };
-                @{"Name" = "SeIncreaseBasePriorityPrivilege";   "Description" = "Increase scheduling priority";                  "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeLoadDriverPrivilege";             "Description" = "Load and unload device drivers";                "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeLockMemoryPrivilege";             "Description" = "Lock pages in memory";                          "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeBatchLogonRight";                 "Description" = "Log on as a batch job";                         "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeServiceLogonRight";               "Description" = "Log on as a service";                           "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeSecurityPrivilege";               "Description" = "Manage auditing and security log";              "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeRelabelPrivilege";                "Description" = "Modify an object label";                        "OperatingSystem" = @("10","6"        ) };
-                @{"Name" = "SeSystemEnvironmentPrivilege";      "Description" = "Modify firmware environment values";            "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeManageVolumePrivilege";           "Description" = "Perform volume maintenance tasks";              "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeProfileSingleProcessPrivilege";   "Description" = "Profile single process";                        "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeSystemProfilePrivilege";          "Description" = "Profile system performance";                    "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeUndockPrivilege";                 "Description" = "Remove computer from docking station";          "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeAssignPrimaryTokenPrivilege";     "Description" = "Replace a process level token";                 "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeRestorePrivilege";                "Description" = "Restore files and directories";                 "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeShutdownPrivilege";               "Description" = "Shut down the system";                          "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeSyncAgentPrivilege";              "Description" = "Synchronize directory service data";            "OperatingSystem" = @("10","6","5","5") };
-                @{"Name" = "SeTakeOwnershipPrivilege";          "Description" = "Take ownership of files or other objects";      "OperatingSystem" = @("10","6","5","5") }
-            )
+            $userRightsAssignments = @{
+                "SeNetworkLogonRight"               = "Access this computer from the network"  
+                "SeTrustedCredManAccessPrivilege"   = "Access Credential Manager as a trusted caller"
+                "SeTcbPrivilege"                    = "Act as part of the operating system"           
+                "SeMachineAccountPrivilege"         = "Add workstations to domain"                    
+                "SeIncreaseQuotaPrivilege"          = "Adjust memory quotas for a process"            
+                "SeInteractiveLogonRight"           = "Allow log on locally"                          
+                "SeRemoteInteractiveLogonRight"     = "Allow log on through Terminal Services"        
+                "SeBackupPrivilege"                 = "Back up files and directories"                 
+                "SeChangeNotifyPrivilege"           = "Bypass traverse checking"                      
+                "SeSystemtimePrivilege"             = "Change the system time"                        
+                "SeTimeZonePrivilege"               = "Change the time zone"                          
+                "SeCreatePagefilePrivilege"         = "Create a pagefile"                             
+                "SeCreateTokenPrivilege"            = "Create a token object"                         
+                "SeCreateGlobalPrivilege"           = "Create global objects"                         
+                "SeCreatePermanentPrivilege"        = "Create permanent shared objects"               
+                "SeCreateSymbolicLinkPrivilege"     = "Create symbolic links"                         
+                "SeDebugPrivilege"                  = "Debug programs"                                
+                "SeDenyNetworkLogonRight"           = "Deny access to this computer from the network" 
+                "SeDenyBatchLogonRight"             = "Deny log on as a batch job"                    
+                "SeDenyServiceLogonRight"           = "Deny log on as a service"                       
+                "SeDenyInteractiveLogonRight"       = "Deny log on locally"                           
+                "SeDenyRemoteInteractiveLogonRight" = "Deny log on through Terminal Services"         
+                "SeEnableDelegationPrivilege"       = "Enable computer and user accounts to be trusted for delegation" 
+                "SeRemoteShutdownPrivilege"         = "Force shutdown from a remote system"      
+                "SeAuditPrivilege"                  = "Generate security audits"                 
+                "SeImpersonatePrivilege"            = "Impersonate a client after authentication"
+                "SeIncreaseWorkingSetPrivilege"     = "Increase a process working set"           
+                "SeIncreaseBasePriorityPrivilege"   = "Increase scheduling priority"             
+                "SeLoadDriverPrivilege"             = "Load and unload device drivers"           
+                "SeLockMemoryPrivilege"             = "Lock pages in memory"                     
+                "SeBatchLogonRight"                 = "Log on as a batch job"                    
+                "SeServiceLogonRight"               = "Log on as a service"                      
+                "SeSecurityPrivilege"               = "Manage auditing and security log"         
+                "SeRelabelPrivilege"                = "Modify an object label"                   
+                "SeSystemEnvironmentPrivilege"      = "Modify firmware environment values"       
+                "SeManageVolumePrivilege"           = "Perform volume maintenance tasks"         
+                "SeProfileSingleProcessPrivilege"   = "Profile single process"                   
+                "SeSystemProfilePrivilege"          = "Profile system performance"               
+                "SeUndockPrivilege"                 = "Remove computer from docking station"     
+                "SeAssignPrimaryTokenPrivilege"     = "Replace a process level token"            
+                "SeRestorePrivilege"                = "Restore files and directories"            
+                "SeShutdownPrivilege"               = "Shut down the system"                     
+                "SeSyncAgentPrivilege"              = "Synchronize directory service data"       
+                "SeTakeOwnershipPrivilege"          = "Take ownership of files or other objects"
+            }
 
             $tmpFile = [io.path]::GetTempFileName()
             "<force file encoding>" | Out-File -Encoding ascii -FilePath $tmpFile
@@ -161,9 +160,9 @@ function Get-UserRightsAssignment {
             $userRightsAssignment_GroupPolicy = $userRightsAssignment_GroupPolicy | Select-String -Pattern "^Se+" | Select-Object -ExpandProperty Line
             $userRightsAssignment_LocalPolicy = $userRightsAssignment_LocalPolicy | Select-String -Pattern "^Se+" | Select-Object -ExpandProperty Line
 
-            foreach ($userRigtsAssignment in $userRightsAssignments) {
-                if (($userRightsAssignment_LocalPolicy | ForEach-Object {$_.Split("=")[0].trim()}) -notcontains $userRigtsAssignment.Name) {
-                    $userRightsAssignment_LocalPolicy += ("{0} = " -f $userRigtsAssignment.Name)
+            foreach ($userRigtsAssignment in $userRightsAssignments.Keys) {
+                if (($userRightsAssignment_LocalPolicy | ForEach-Object {$_.Split("=")[0].trim()}) -notcontains $userRigtsAssignment) {
+                    $userRightsAssignment_LocalPolicy += ("{0} = " -f $userRigtsAssignment)
                 }
             }
 
@@ -172,7 +171,7 @@ function Get-UserRightsAssignment {
                     New-Object -TypeName psobject -Property @{
                         ComputerName = $env:COMPUTERNAME
                         UserRightsAssignment = $userRigtsAssignment.Split("=")[0].trim()
-                        FriendlyName = $userRightsAssignments | Where-Object {$_.Name -eq $userRigtsAssignment.Split("=")[0].trim()} | ForEach-Object {$_.Description}
+                        FriendlyName = $userRightsAssignments[$userRigtsAssignment.Split("=")[0].trim()]
                         IdentitySid = ""
                         IdentityName = "" 
                         GroupPolicyControlled = (($userRightsAssignment_GroupPolicy | ForEach-Object {$_.Split("=")[0].trim()}) -contains $userRigtsAssignment.Split("=")[0].trim())
@@ -183,7 +182,7 @@ function Get-UserRightsAssignment {
                         New-Object -TypeName psobject -Property @{
                             ComputerName = $env:COMPUTERNAME
                             UserRightsAssignment = $userRigtsAssignment.Split("=")[0].trim()
-                            FriendlyName = $userRightsAssignments | Where-Object {$_.Name -eq $userRigtsAssignment.Split("=")[0].trim()} | ForEach-Object {$_.Description}
+                            FriendlyName = $userRightsAssignments[$userRigtsAssignment.Split("=")[0].trim()]
                             IdentitySid = $sid 
                             IdentityName = $sid.trim('*') | ConvertTo-IdentityObject | Select-Object -ExpandProperty NTAccountName
                             GroupPolicyControlled = (($userRightsAssignment_GroupPolicy | ForEach-Object {$_.Split("=")[0].trim()}) -contains $userRigtsAssignment.Split("=")[0].trim())
@@ -194,7 +193,7 @@ function Get-UserRightsAssignment {
         }
 
         if ($ComputerName.Length -lt 1) {
-            . $scriptBlock | Out-GridView
+            . $scriptBlock
         }
         else {
             Invoke-Command -ComputerName $ComputerName -SessionOption (New-PSSessionOption -NoMachineProfile) -ScriptBlock $scriptBlock
