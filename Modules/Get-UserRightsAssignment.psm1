@@ -9,6 +9,7 @@ function Get-UserRightsAssignment {
 
     begin {
     }
+
     process {
         Set-StrictMode -Version 2
         $ErrorActionPreference = 'Continue'
@@ -90,7 +91,7 @@ function Get-UserRightsAssignment {
                 end {
                 }
             }
-            
+
             $userRightsAssignments = @{
                 "SeNetworkLogonRight"               = "Access this computer from the network"  
                 "SeTrustedCredManAccessPrivilege"   = "Access Credential Manager as a trusted caller"
@@ -204,6 +205,7 @@ function Get-UserRightsAssignment {
             Invoke-Command -ComputerName $ComputerName -SessionOption (New-PSSessionOption -NoMachineProfile) -ScriptBlock $scriptBlock
         }
     }
+    
     end {
     }
 }
