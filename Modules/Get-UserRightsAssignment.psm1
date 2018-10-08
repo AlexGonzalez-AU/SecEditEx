@@ -4,7 +4,7 @@ function Get-UserRightsAssignment {
     param (
         [Parameter(Mandatory=$false,ValueFromPipeline=$true,Position=0)]
         [string]
-        $ComputerName=""
+        $ComputerName = ""
     )
 
     begin {
@@ -39,7 +39,7 @@ function Get-UserRightsAssignment {
                         else {
                             # Administrator
                             $accountName = New-Object System.Security.Principal.NTAccount($InputObject)     
-                    
+            
                             $eap = $ErrorActionPreference 
                             $ErrorActionPreference = "Stop"
                             try {
@@ -49,10 +49,10 @@ function Get-UserRightsAssignment {
                                 $sid = ""
                                 $a_name = $InputObject
                             }
-                            $ErrorActionPreference = $eap                                       
+                            $ErrorActionPreference = $eap 
                         }
                     }
-                    elseif($InputObject.GetType() -eq [byte[]]) {
+                    elseif ($InputObject.GetType() -eq [byte[]]) {
                         # @(1, 5, 0, 0, 0, 0, 0, 5, 21, 0, 0, 0, 91, 118, 139, 140, 62, 236, 42, 100, 231, 116, 253, 137, 244, 1, 0, 0)
                         $sid = New-Object System.Security.Principal.SecurityIdentifier($InputObject, 0)
                     }
@@ -73,18 +73,23 @@ function Get-UserRightsAssignment {
                             $nTAccountName = $a_name
                         }
                     }
-                    $ErrorActionPreference = $eap
-
+                    $ErrorActionPreference = $eap        
+            
+                    [byte[]]$bytes = New-Object 'byte[]' $sid.BinaryLength 
+                    $sid.GetBinaryForm($bytes, 0)
             
                     New-Object -TypeName psobject -Property @{
                         Sid = $sid
-                        NTAccountName = $nTAccountName
+                        NTAccountName = $nTAccountName 
+                        ByteArray = $bytes
+                        HexArray = $bytes | ForEach-Object { ("{0:x2}" -f $_) }
+                        LDAPString = ($bytes | ForEach-Object { ("\{0:x2}" -f $_) }) -join("")
                     }            
                 }
                     
                 end {
                 }
-            }    
+            }
             
             $userRightsAssignments = @{
                 "SeNetworkLogonRight"               = "Access this computer from the network"  
