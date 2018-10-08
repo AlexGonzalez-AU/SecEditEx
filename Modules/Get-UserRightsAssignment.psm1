@@ -1,3 +1,5 @@
+#Requires -runasadmin
+
 function Get-UserRightsAssignment {
     [CmdletBinding()]
     
@@ -205,7 +207,7 @@ function Get-UserRightsAssignment {
             Invoke-Command -ComputerName $ComputerName -SessionOption (New-PSSessionOption -NoMachineProfile) -ScriptBlock $scriptBlock
         }
     }
-    
+
     end {
     }
 }
