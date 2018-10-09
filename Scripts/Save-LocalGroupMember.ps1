@@ -160,5 +160,5 @@ else {
 }
 
 <#
-    PowerShell.exe -ExecutionPolicy bypass -File .\Save-LocalGroupMembership.ps1 -DirectoryPath .\
+    PowerShell.exe -ExecutionPolicy bypass -File .\Save-LocalGroupMember.ps1 -DirectoryPath .\
 #>
