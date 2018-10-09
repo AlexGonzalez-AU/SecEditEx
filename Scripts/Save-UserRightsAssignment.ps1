@@ -1,5 +1,12 @@
 #Requires -runasadmin
 
+param (
+    [Parameter(Mandatory=$false,ValueFromPipeline=$true,Position=0)]
+    [string]$ComputerName = "",
+    [Parameter(Mandatory=$false,ValueFromPipeline=$false,Position=1)]
+    [string]$DirectoryPath = ""
+)
+
 function Get-UserRightsAssignment {
     [CmdletBinding()]
     
@@ -211,3 +218,22 @@ function Get-UserRightsAssignment {
     end {
     }
 }
+
+if ($ComputerName.Length -gt 0) {
+    $filename = "UserRightsAssignment_{0}_{1:yyyyMMddHHmmss}.csv" -f $ComputerName, (Get-Date)
+}
+else {
+    $filename = "UserRightsAssignment_{0}_{1:yyyyMMddHHmmss}.csv" -f $env:COMPUTERNAME, (Get-Date)
+}
+
+if ($DirectoryPath.Length -gt 0) {
+    Get-UserRightsAssignment -ComputerName $ComputerName | 
+        Export-Csv -NoTypeInformation -Path (Join-Path -Path $DirectoryPath -ChildPath $filename)
+}
+else {
+    Get-UserRightsAssignment -ComputerName $ComputerName
+}
+
+<#
+    PowerShell.exe -ExecutionPolicy bypass -File .\Save-UserRightsAssignment.ps1 -DirectoryPath .\
+#>
